@@ -1,28 +1,35 @@
 // TODO 
+//THIS CREATES MARIO IN THE GAME
 game.PlayerEntity = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.Entity, 'init', [x, y, {
              image: "mario",
-             spritewidth: "128",
-             spriteheight: "128",
-             width: 128,
-             height: 128,
+             spritewidth: "64",
+             spriteheight: "64",
+             width: 64,
+             height: 64,
              getShape: function(){
-                 return (new me.Rect(0, 0, 30, 128)).toPolygon();
+                 return (new me.Rect(0, 0, 64, 64)).toPolygon();
              }
         }]);
     
         this.renderable.addAnimation("idle", [3]);
-        this.renderable.addAnimation("smallWalk", [8, 9, 10, 11, 12, 13], 80);
+        //CREATING AN ANIMATION CALLED SMALL WALK USING IMAGES OF MARIO
+        //SETS THE ANIMATION TO RUN THROUGH PICTURES 8-13
+        //THE LAST NUMBER SAYS WE SWITCH BETWEEN PICTURES EVERY 80 MILLISECOND
+        this.renderable.addAnimation("smallWalk", [88, 89, 90, 91, 92, 93, 94, 95, 96], 80);
         
         this.renderable.setCurrentAnimation("idle");
-        
+        // SETS THE CAMERA (VIEWPORT) TO FOLLOW MARIOS ON BOTH THE X AN Y AXIS
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
         
         this.body.setVelocity(5, 20);
     },
     update: function(delta) {
+        // CHECKS IF RIGHT KEY IS PRESSED
         if (me.input.isKeyPressed("right")) {
+            //SETS THE POSITION OF MARIO ON THE X AXIS BY ADDING THE X VALUE
+            // ME.TIMER.TICK USES THE TIME THE LAST ANIMATION WAS SET
             this.body.vel.x += this.body.accel.x * me.timer.tick;
 
         }
@@ -67,6 +74,8 @@ game.PlayerEntity = me.Entity.extend({
 game.LevelTrigger = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.Entity, 'init', [x, y, settings]);
+        //IF SOMETHING COLLIDES WITH THIS OBJECT THEN WE WILL CALL THE ONCOLLISION FUNCTION ANND PASS IT
+        //A HIDDEN PARAMETER OF THIS OBJECT
         this.body.onCollision = this.onCollision.bind(this);
         this.level = settings.level;
         console.log("init");

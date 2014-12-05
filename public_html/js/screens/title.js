@@ -2,6 +2,8 @@ game.TitleScreen = me.ScreenObject.extend({
 	/**	
 	 *  action to perform on state change
 	 */
+        
+        //THIS CODE MAKES THE STARTING SCREEN FOR THE GAME
 	onResetEvent: function() {	
 		var titleImage = new me.Sprite(0, 0, me.loader.getImage("title-screen"), 10);
                 me.game.world.addChild(titleImage, 1);
@@ -14,6 +16,7 @@ game.TitleScreen = me.ScreenObject.extend({
                 
                     },
                     
+                    //THIS IS THE TITLE FOR THE GAME
                     draw: function(renderer){
                         this.font.draw(renderer.getContext(), "SUCKY MARIO 36", 450, 130);
                         this.font.draw(renderer.getContext(), "PRESS ENTER TO PLAY", 250, 530);
