@@ -5,7 +5,7 @@ game.TitleScreen = me.ScreenObject.extend({
         
         //THIS CODE MAKES THE STARTING SCREEN FOR THE GAME
 	onResetEvent: function() {	
-		var titleImage = new me.Sprite(0, 0, me.loader.getImage("title-screen"), 10);
+		var titleImage = new me.Sprite(0, 0, me.loader.getImage("download"), -10);
                 me.game.world.addChild(titleImage, 1);
                 me.input.bindKey(me.input.KEY.ENTER, "start");
                 

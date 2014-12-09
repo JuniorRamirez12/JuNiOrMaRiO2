@@ -11,6 +11,7 @@
         {name: "mario", type:"image", src: "data/img/player1.png"},
         {name: "download", type:"image", src: "data/img/download.png"},
         {name: "slime", type:"image", src: "data/img/slime-spritesheet.png"},
+        
 
 	/* Atlases 
 	 * @example

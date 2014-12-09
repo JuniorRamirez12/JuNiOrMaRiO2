@@ -3,7 +3,7 @@
 game.PlayerEntity = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.Entity, 'init', [x, y, {
-             image: "mario",
+             image: "download",
              spritewidth: "64",
              spriteheight: "64",
              width: 64,
@@ -17,7 +17,7 @@ game.PlayerEntity = me.Entity.extend({
         //CREATING AN ANIMATION CALLED SMALL WALK USING IMAGES OF MARIO
         //SETS THE ANIMATION TO RUN THROUGH PICTURES 8-13
         //THE LAST NUMBER SAYS WE SWITCH BETWEEN PICTURES EVERY 80 MILLISECOND
-        this.renderable.addAnimation("smallWalk", [88, 89, 90, 91, 92, 93, 94, 95, 96], 80);
+        this.renderable.addAnimation("smallWalk", [143, 144, 145, 146, 147, 148, 149, 150], -80);
         
         this.renderable.setCurrentAnimation("idle");
         // SETS THE CAMERA (VIEWPORT) TO FOLLOW MARIOS ON BOTH THE X AN Y AXIS
@@ -66,6 +66,9 @@ game.PlayerEntity = me.Entity.extend({
     },
     
     collideHandler: function (response){
+        if(response.b.type === 'badguy'){
+            me.state.change(me.state.MENU);
+        }
         
     }
     
